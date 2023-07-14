@@ -15,8 +15,6 @@ public class CourseRegisterDto {
   private CourseType courseType;
   //강의 언어 (영어, 중국어)
   private LanguageType language;
-  //만료일자
-  private int duration;
   //강의 횟수
   private int lessonCount;
   //가격 (할인가능해야함)

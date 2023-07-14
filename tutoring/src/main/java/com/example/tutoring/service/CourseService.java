@@ -17,7 +17,6 @@ public class CourseService {
         .title(dto.getTitle())
         .type(dto.getCourseType())
         .language(dto.getLanguage())
-        .duration(dto.getDuration())
         .lessonCount(dto.getLessonCount())
         .price(dto.getPrice())
         .saleStartDate(dto.getSaleStartDate())

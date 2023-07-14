@@ -1,6 +1,7 @@
 package com.example.tutoring.models;
 
 import java.time.LocalDateTime;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,9 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "lessons")
+@NoArgsConstructor
+@Getter
 public class Lesson {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,10 +25,8 @@ public class Lesson {
 
   //수업일자
   private LocalDateTime date;
-
   //수강기간
   private LocalDateTime duration;
-
   //강의시작시간
   private LocalDateTime lessonStartTime;
 
@@ -31,18 +36,23 @@ public class Lesson {
 
   //수강과정
   @ManyToOne
-  @JoinColumn(name = "course_id")
+  @JoinColumn(name = "course_id",nullable = false)
   private Course course;
 
   //수업 개설 튜터
   @ManyToOne
-  @JoinColumn(name = "tutor_id")
+  @JoinColumn(name = "tutor_id",nullable = false)
   private Member tutor;
 
-
-
-
-
-
-
+  @Builder
+  public Lesson(LocalDateTime date, LocalDateTime duration, LocalDateTime lessonStartTime,
+      boolean isStarted, boolean isFinished,Course course,Member tutor) {
+    this.date = date;
+    this.duration = duration;
+    this.lessonStartTime = lessonStartTime;
+    this.isStarted = isStarted;
+    this.isFinished = isFinished;
+    this.course = course;
+    this.tutor = tutor;
+  }
 }

@@ -1,6 +1,7 @@
 package com.example.tutoring.models;
 
 import com.example.tutoring.models.enums.CourseType;
+import com.example.tutoring.models.enums.ExpirationType;
 import com.example.tutoring.models.enums.LanguageType;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -36,8 +37,6 @@ public class Course {
   //강의 언어 (영어, 중국어)
   @Enumerated(EnumType.STRING)
   private LanguageType language;
-  //만료일자
-  private int duration;
   //강의 횟수
   private int lessonCount;
   //가격 (할인가능해야함)
@@ -54,13 +53,12 @@ public class Course {
   private List<Lesson> lessons;
 
   @Builder
-  protected Course(String title, CourseType type, LanguageType language, int duration,
+  protected Course(String title, CourseType type, LanguageType language,
       int lessonCount, BigDecimal price, LocalDate saleStartDate, LocalDate saleEndDate,
       boolean isSaleEnded) {
     this.title = title;
     this.courseType = type;
     this.language = language;
-    this.duration = duration;
     this.lessonCount = lessonCount;
     this.price = price;
     this.saleStartDate = saleStartDate;
