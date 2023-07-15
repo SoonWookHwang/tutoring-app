@@ -1,6 +1,6 @@
 package com.example.tutoring.dto.request;
 
-import com.example.tutoring.models.enums.CourseType;
+import com.example.tutoring.models.enums.ClassType;
 import com.example.tutoring.models.enums.LanguageType;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -12,7 +12,7 @@ import lombok.Setter;
 public class CourseRegisterDto {
   private String title;
   //강의 타입 (채팅, 음성)
-  private CourseType courseType;
+  private ClassType classType;
   //강의 언어 (영어, 중국어)
   private LanguageType language;
   //강의 횟수

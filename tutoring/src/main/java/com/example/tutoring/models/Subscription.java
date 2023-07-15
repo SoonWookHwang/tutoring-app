@@ -2,6 +2,7 @@ package com.example.tutoring.models;
 
 import com.example.tutoring.models.bridge.SubscriptionMember;
 import com.example.tutoring.models.enums.ExpirationType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -44,10 +45,12 @@ public class Subscription {
 
   @ManyToOne
   @JoinColumn(name = "course_id")
+  @JsonIgnore
   private Course course;
 
   //판매 이력
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "subscription")
+  @JsonIgnore
   private List<SubscriptionMember> salesRecord;
 
 
@@ -60,8 +63,7 @@ public class Subscription {
     this.course = course;
   }
 
-  //테스트
-
+  //테스트 더미데이터 생성용 생성자
   public Subscription(String title, ExpirationType expType, int usageCount, BigDecimal price,Course course, boolean isSalesEnded) {
     this.title = title;
     this.expType = expType.getExpType();

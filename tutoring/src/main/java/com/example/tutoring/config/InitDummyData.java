@@ -3,7 +3,7 @@ package com.example.tutoring.config;
 import com.example.tutoring.models.Course;
 import com.example.tutoring.models.Member;
 import com.example.tutoring.models.Subscription;
-import com.example.tutoring.models.enums.CourseType;
+import com.example.tutoring.models.enums.ClassType;
 import com.example.tutoring.models.enums.ExpirationType;
 import com.example.tutoring.models.enums.LanguageType;
 import com.example.tutoring.models.enums.MemberRole;
@@ -29,12 +29,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class InitDummyData {
 
   private final CourseRepository courseRepository;
-  private final LessonRepository lessonRepository;
   private final MemberRepository memberRepository;
-  private final SpecialEventRepository specialEventRepository;
-  private final SubscriptionMemberRepository subscriptionMemberRepository;
   private final SubscriptionRepository subscriptionRepository;
 
+  private final SpecialEventRepository specialEventRepository;
+  private final SubscriptionMemberRepository subscriptionMemberRepository;
+  private final LessonRepository lessonRepository;
 
   @Transactional
   @EventListener(ApplicationReadyEvent.class)
@@ -97,72 +97,72 @@ public class InitDummyData {
       if (i % 7 == 0) {
         Course dummys = Course.builder()
             .title("chat-en-" + i)
-            .type(CourseType.CHAT)
+            .type(ClassType.CHAT)
             .language(LanguageType.ENGLISH)
             .lessonCount(30)
             .price(basePrice)
             .saleStartDate(LocalDate.parse("2023-07-01").plusDays(randomDays))
-            .saleEndDate(LocalDate.parse("2023-07-01").plusDays(randomDays))
+            .saleEndDate(LocalDate.parse("2023-07-31").plusDays(randomDays))
             .isSaleEnded(isSale)
             .build();
         dummyList.add(dummys);
       } else if (i % 7 == 2) {
         Course dummys = Course.builder()
             .title("chat-ch-" + i)
-            .type(CourseType.CHAT)
+            .type(ClassType.CHAT)
             .language(LanguageType.CHINESE)
             .lessonCount(60)
             .price(basePrice)
             .saleStartDate(LocalDate.parse("2023-07-01").plusDays(randomDays))
-            .saleEndDate(LocalDate.parse("2023-07-01").plusDays(randomDays))
+            .saleEndDate(LocalDate.parse("2023-07-31").plusDays(randomDays))
             .isSaleEnded(isSale)
             .build();
         dummyList.add(dummys);
       } else if (i % 7 == 4) {
         Course dummys = Course.builder()
             .title("voice-en-" + i)
-            .type(CourseType.VOICE)
+            .type(ClassType.VOICE)
             .language(LanguageType.ENGLISH)
             .lessonCount(60)
             .price(basePrice)
             .saleStartDate(LocalDate.parse("2023-07-01").plusDays(randomDays))
-            .saleEndDate(LocalDate.parse("2023-07-01").plusDays(randomDays))
+            .saleEndDate(LocalDate.parse("2023-07-31").plusDays(randomDays))
             .isSaleEnded(isSale)
             .build();
         dummyList.add(dummys);
       } else if (i % 7 == 5) {
         Course dummys = Course.builder()
             .title("voice-ch-" + i)
-            .type(CourseType.VOICE)
+            .type(ClassType.VOICE)
             .language(LanguageType.CHINESE)
             .lessonCount(60)
             .price(basePrice)
             .saleStartDate(LocalDate.parse("2023-07-01").plusDays(randomDays))
-            .saleEndDate(LocalDate.parse("2023-07-01").plusDays(randomDays))
+            .saleEndDate(LocalDate.parse("2023-07-31").plusDays(randomDays))
             .isSaleEnded(isSale)
             .build();
         dummyList.add(dummys);
       } else if (i % 7 == 6) {
         Course dummys = Course.builder()
             .title("both-en-" + i)
-            .type(CourseType.BOTH)
+            .type(ClassType.BOTH)
             .language(LanguageType.ENGLISH)
             .lessonCount(60)
             .price(basePrice)
             .saleStartDate(LocalDate.parse("2023-07-01").plusDays(randomDays))
-            .saleEndDate(LocalDate.parse("2023-07-01").plusDays(randomDays))
+            .saleEndDate(LocalDate.parse("2023-07-31").plusDays(randomDays))
             .isSaleEnded(isSale)
             .build();
         dummyList.add(dummys);
       } else {
         Course dummys = Course.builder()
             .title("both-ch-" + i)
-            .type(CourseType.BOTH)
+            .type(ClassType.BOTH)
             .language(LanguageType.CHINESE)
             .lessonCount(60)
             .price(basePrice)
             .saleStartDate(LocalDate.parse("2023-07-01").plusDays(randomDays))
-            .saleEndDate(LocalDate.parse("2023-07-01").plusDays(randomDays))
+            .saleEndDate(LocalDate.parse("2023-07-31").plusDays(randomDays))
             .isSaleEnded(isSale)
             .build();
         dummyList.add(dummys);

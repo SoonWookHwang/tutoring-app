@@ -4,6 +4,7 @@ import com.example.tutoring.dto.request.LessonRegisterDto;
 import com.example.tutoring.models.Course;
 import com.example.tutoring.models.Lesson;
 import com.example.tutoring.models.Member;
+import com.example.tutoring.models.enums.ClassType;
 import com.example.tutoring.repository.CourseRepository;
 import com.example.tutoring.repository.LessonRepository;
 import com.example.tutoring.repository.MemberRepository;
@@ -29,7 +30,15 @@ public class LessonService {
     Course course = courseRepository.findById(dto.getCourseId())
         .orElseThrow(() -> new NoSuchElementException("해당 강좌가 존재하지 않습니다."));
 
+    if(!dto.getLanguageType().equals(course.getLanguage())){
+      throw new IllegalArgumentException("해당 강좌에서는 수업 개설이 허용되지 않은 언어입니다.");
+    }
+    if(!dto.getClassType().equals(course.getClassType())&&course.getClassType()!= ClassType.BOTH){
+      throw new IllegalAccessException("해당 강좌에서는 수업 개설이 허용되지 않은 수업방식입니다.");
+    }
     Lesson newLesson = Lesson.builder()
+        .classType(dto.getClassType())
+        .languageType(dto.getLanguageType())
         .date(dto.getDate())
         .duration(dto.getDuration())
         .lessonStartTime(dto.getLessonStartTime())
@@ -40,5 +49,7 @@ public class LessonService {
         .build();
     return lessonRepository.save(newLesson).getId();
   }
+
+
 
 }

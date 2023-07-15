@@ -1,8 +1,8 @@
 package com.example.tutoring.models;
 
-import com.example.tutoring.models.enums.CourseType;
-import com.example.tutoring.models.enums.ExpirationType;
+import com.example.tutoring.models.enums.ClassType;
 import com.example.tutoring.models.enums.LanguageType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -33,7 +33,7 @@ public class Course {
   private String title;
   //강의 타입 (채팅, 음성)
   @Enumerated(EnumType.STRING)
-  private CourseType courseType;
+  private ClassType classType;
   //강의 언어 (영어, 중국어)
   @Enumerated(EnumType.STRING)
   private LanguageType language;
@@ -52,14 +52,15 @@ public class Course {
   private List<Subscription> subscriptions;
 
   @OneToMany(mappedBy = "course")
+  @JsonIgnore
   private List<Lesson> lessons;
 
   @Builder
-  protected Course(String title, CourseType type, LanguageType language,
+  protected Course(String title, ClassType type, LanguageType language,
       int lessonCount, BigDecimal price, LocalDate saleStartDate, LocalDate saleEndDate,
       boolean isSaleEnded) {
     this.title = title;
-    this.courseType = type;
+    this.classType = type;
     this.language = language;
     this.lessonCount = lessonCount;
     this.price = price;
