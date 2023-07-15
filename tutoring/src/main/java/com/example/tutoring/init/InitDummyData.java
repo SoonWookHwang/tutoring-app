@@ -1,4 +1,4 @@
-package com.example.tutoring.config;
+package com.example.tutoring.init;
 
 import com.example.tutoring.models.Course;
 import com.example.tutoring.models.Member;

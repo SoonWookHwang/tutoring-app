@@ -11,10 +11,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface CourseRepository extends JpaRepository<Course,Long> {
   //findByCourseTypeAndSaleStartDateBeforeAndSaleEndDateAfterAndIsSaleEndedFalse
 
-  Optional<List<Course>> findByLanguageAndCourseTypeAndSaleStartDateBeforeAndSaleEndDateAfterAndIsSaleEndedFalse(
+  Optional<List<Course>> findByLanguageAndClassTypeAndSaleStartDateBeforeAndSaleEndDateAfterAndIsSaleEndedFalse(
       LanguageType languageType, ClassType classType, LocalDate saleStartDate, LocalDate saleEndDate);
 
-  Optional<List<Course>> findByCourseTypeAndSaleStartDateBeforeAndSaleEndDateAfterAndIsSaleEndedFalse(
+  Optional<List<Course>> findByClassTypeAndSaleStartDateBeforeAndSaleEndDateAfterAndIsSaleEndedFalse(
       ClassType classType, LocalDate saleStartDate, LocalDate saleEndDate);
 
 

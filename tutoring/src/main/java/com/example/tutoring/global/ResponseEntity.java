@@ -1,13 +1,8 @@
 package com.example.tutoring.global;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
-@Setter
-@Getter
-@RequiredArgsConstructor
+
 public record ResponseEntity<T>(HttpStatus httpStatus, T body, String msg) {
 
   public static <T> ResponseEntity<T> success(T body) {

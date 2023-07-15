@@ -38,11 +38,11 @@ public class CourseService {
   public List<Course> getActiveCourses(LanguageType languageType, ClassType classType) {
     LocalDate currentDate = LocalDate.now();
     if (languageType == null) {
-      return courseRepository.findByCourseTypeAndSaleStartDateBeforeAndSaleEndDateAfterAndIsSaleEndedFalse(
+      return courseRepository.findByClassTypeAndSaleStartDateBeforeAndSaleEndDateAfterAndIsSaleEndedFalse(
               classType, currentDate, currentDate)
           .orElseThrow(() -> new NoSuchElementException("조건에 맞는 강좌가 없습니다."));
     } else {
-      return courseRepository.findByLanguageAndCourseTypeAndSaleStartDateBeforeAndSaleEndDateAfterAndIsSaleEndedFalse(
+      return courseRepository.findByLanguageAndClassTypeAndSaleStartDateBeforeAndSaleEndDateAfterAndIsSaleEndedFalse(
               languageType, classType, currentDate, currentDate)
           .orElseThrow(() -> new NoSuchElementException("조건에 맞는 강좌가 없습니다."));
     }
