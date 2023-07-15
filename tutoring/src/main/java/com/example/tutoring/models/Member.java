@@ -1,6 +1,5 @@
 package com.example.tutoring.models;
 
-import com.example.tutoring.models.bridge.SubscriptionMember;
 import com.example.tutoring.models.enums.MemberRole;
 import java.util.List;
 import javax.persistence.Column;
@@ -19,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "members")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member {
+public class Member extends Timestamped{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name="member_id")

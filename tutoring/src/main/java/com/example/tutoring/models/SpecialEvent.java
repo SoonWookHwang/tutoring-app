@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "events")
 @Getter
 @NoArgsConstructor
-public class SpecialEvent {
+public class SpecialEvent extends Timestamped{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "event_id")

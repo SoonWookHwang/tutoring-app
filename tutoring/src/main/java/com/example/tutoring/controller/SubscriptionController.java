@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SubscriptionController {
   private final SubscriptionService subscriptionService;
 
-  @PostMapping
+  @PostMapping("/admin")
   public Long registerSubscription(@RequestBody SubsRegisterDto dto){
     return subscriptionService.registerSubscription(dto);
   }

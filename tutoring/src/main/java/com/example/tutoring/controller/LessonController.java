@@ -20,7 +20,7 @@ public class LessonController {
   @PostMapping
   public ResponseEntity<?> registerLesson(@RequestBody LessonRegisterDto dto) {
     try {
-      return sucess(lessonService.registerLesson(dto));
+      return success(lessonService.registerLesson(dto));
     }catch (Exception e){
       return fail(e);
     }

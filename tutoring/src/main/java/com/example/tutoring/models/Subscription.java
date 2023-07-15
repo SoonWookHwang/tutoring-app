@@ -1,10 +1,8 @@
 package com.example.tutoring.models;
 
-import com.example.tutoring.models.bridge.SubscriptionMember;
 import com.example.tutoring.models.enums.ExpirationType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "subscriptions")
 @Getter
 @NoArgsConstructor
-public class Subscription {
+public class Subscription extends Timestamped{
 
   @Id
   @Column(name = "subs_id")

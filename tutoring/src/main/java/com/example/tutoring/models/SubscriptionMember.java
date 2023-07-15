@@ -1,8 +1,5 @@
-package com.example.tutoring.models.bridge;
+package com.example.tutoring.models;
 
-import com.example.tutoring.models.Member;
-import com.example.tutoring.models.SpecialEvent;
-import com.example.tutoring.models.Subscription;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -24,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "subscription_member")
 @NoArgsConstructor
 @Getter
-public class SubscriptionMember {
+public class SubscriptionMember extends Timestamped{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -41,6 +38,9 @@ public class SubscriptionMember {
   // 실제 구매 가격
   @Column(name = "sale_price",nullable = false)
   private BigDecimal salePrice;
+  // 사용시작 여부
+  @Column(name = "is_used")
+  private boolean isUsed;
 
   // 구독권 종류
   @ManyToOne
@@ -71,5 +71,13 @@ public class SubscriptionMember {
     this.subscription = subscription;
     this.purchasedStudent = purchasedStudent;
     this.specialEvent = specialEvent;
+    this.isUsed = false;
+  }
+
+  public void onceTakeLesson(SubscriptionMember ticket){
+    ticket.usageCount -= 1;
+    if(!ticket.isUsed){
+      ticket.isUsed=true;
+    }
   }
 }

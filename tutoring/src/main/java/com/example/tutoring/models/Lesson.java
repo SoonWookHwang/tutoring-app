@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "lessons")
 @NoArgsConstructor
 @Getter
-public class Lesson {
+public class Lesson extends Timestamped{
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

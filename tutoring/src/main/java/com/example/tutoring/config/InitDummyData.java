@@ -173,6 +173,7 @@ public class InitDummyData {
 
   public void initSubs() {
     List<Subscription> dummyList = new ArrayList<>();
+
     for (int i = 0; i < 300; i++) {
       Random random = new Random();
       ExpirationType expType;
@@ -195,4 +196,15 @@ public class InitDummyData {
     }
     subscriptionRepository.saveAll(dummyList);
   }
+
+  public void initSubsAndStudent(){
+    Course course = courseRepository.findById(1L).orElse(null);
+    Member student = memberRepository.findById(1L).orElse(null);
+//    Subscription ticket = Subscription.builder()
+//        ..build();
+//    if(student!=null){
+//
+    }
+//    SubscriptionMember.builder().purchasedStudent()
+//  }
 }

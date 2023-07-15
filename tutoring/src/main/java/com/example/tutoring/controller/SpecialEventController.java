@@ -15,7 +15,7 @@ public class SpecialEventController {
   private final SpecialEventService specialEventService;
 
 
-  @PostMapping
+  @PostMapping("/admin")
   public Long SpecialEventRegister(@RequestBody SpecialEventRegisterDto dto){
     return specialEventService.createEvent(dto);
   }

@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "courses")
 @NoArgsConstructor
 @Getter
-public class Course {
+public class Course extends Timestamped{
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,7 +72,7 @@ public class Course {
     this.saleStartDate = saleStartDate;
     this.saleEndDate = saleEndDate;
   }
-  public void updateIsSaleEnded(boolean isSaleEnded){
+  public void changeIsSaleEnded(boolean isSaleEnded){
     this.isSaleEnded = isSaleEnded;
   }
   public void updatePrice(BigDecimal price){
