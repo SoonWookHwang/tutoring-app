@@ -4,13 +4,13 @@ import lombok.Getter;
 
 @Getter
 public enum ClassType {
-  CHAT("1"),
-  VOICE("2"),
-  BOTH("3");
+  CHAT("CHAT"),
+  VOICE("VOICE"),
+  BOTH("BOTH");
 
-  private final String courseType;
+  private final String classType;
 
-  ClassType(String courseType){
-    this.courseType=courseType;
+  ClassType(String classType){
+    this.classType=classType;
   }
 }

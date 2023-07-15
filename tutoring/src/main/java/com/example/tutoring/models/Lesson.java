@@ -4,6 +4,8 @@ import com.example.tutoring.models.enums.ClassType;
 import com.example.tutoring.models.enums.LanguageType;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,8 +33,10 @@ public class Lesson extends Timestamped{
   //강의시작시간
   private LocalDateTime lessonStartTime;
   //수업 방식
+  @Enumerated(EnumType.STRING)
   private ClassType classType;
   //수업 언어
+  @Enumerated(EnumType.STRING)
   private LanguageType languageType;
   //수업 진행 상태
   private boolean isStarted;
