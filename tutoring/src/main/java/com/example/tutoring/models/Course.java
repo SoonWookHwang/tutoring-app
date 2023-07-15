@@ -39,7 +39,7 @@ public class Course {
   private LanguageType language;
   //강의 횟수
   private int lessonCount;
-  //가격 (할인가능해야함)
+  //정찰 가격 (할인가능해야함)
   private BigDecimal price;
   //판매 시작 일자
   private LocalDate saleStartDate;
@@ -48,6 +48,8 @@ public class Course {
   //판매 상태
   private boolean isSaleEnded;
 
+  @OneToMany(mappedBy = "course")
+  private List<Subscription> subscriptions;
 
   @OneToMany(mappedBy = "course")
   private List<Lesson> lessons;

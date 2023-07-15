@@ -24,7 +24,7 @@ public class SpecialEvent {
   // 이벤트 이름
   private String title;
 
-  // 할인율
+  // 할인율  0.2
   private BigDecimal discount;
 
   @Builder

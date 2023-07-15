@@ -17,6 +17,8 @@ public class SubsRegisterDto {
   private int usageCount;
   //사용기한
   private ExpirationType expirationType;
+  //강좌 아이디
+  private Long courseID;
 
 
 

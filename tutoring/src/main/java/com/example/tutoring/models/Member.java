@@ -25,7 +25,7 @@ public class Member {
   @Column(name="member_id")
   private Long id;
 
-  @Column(unique = true,nullable = false,updatable = false, length = 8)
+  @Column(unique = true,nullable = false,updatable = false)
   private String username;
 
   @Column(nullable = false)

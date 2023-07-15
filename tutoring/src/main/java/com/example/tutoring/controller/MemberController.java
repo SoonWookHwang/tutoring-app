@@ -16,8 +16,6 @@ public class MemberController {
 
   @PostMapping("/signup")
   public Long signup(@RequestBody MemberSignupDto dto){
-    System.out.println(dto.getUsername());
-    System.out.println(dto.getPassword());
     return memberService.signup(dto);
   }
 
