@@ -9,7 +9,6 @@ import com.example.tutoring.models.Lesson;
 import com.example.tutoring.models.Member;
 import com.example.tutoring.models.SubscriptionMember;
 import com.example.tutoring.models.enums.ClassType;
-import com.example.tutoring.models.enums.LanguageType;
 import com.example.tutoring.repository.CourseRepository;
 import com.example.tutoring.repository.LessonRepository;
 import com.example.tutoring.repository.MemberRepository;

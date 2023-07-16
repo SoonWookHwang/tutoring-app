@@ -1,6 +1,5 @@
 package com.example.tutoring.service;
 
-import com.example.tutoring.dto.request.ChatRoom;
 import com.example.tutoring.models.Lesson;
 import com.example.tutoring.repository.LessonRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,27 +24,27 @@ import org.springframework.web.socket.WebSocketSession;
 public class ChatService {
   private final LessonRepository lessonRepository;
   private final ObjectMapper mapper;
-  private Map<String, ChatRoom> chatRooms;
+  private Map<String, ChatRoomService> chatRooms;
 
   @PostConstruct
   private void init() {
     chatRooms = new LinkedHashMap<>();
   }
 
-  public List<ChatRoom> findAllRoom(){
+  public List<ChatRoomService> findAllRoom(){
     return new ArrayList<>(chatRooms.values());
   }
-  public ChatRoom findRoomById(String roomId){
+  public ChatRoomService findRoomById(String roomId){
     return chatRooms.get(roomId);
   }
 
-  public ChatRoom createRoom(Long lessonId) {
+  public ChatRoomService createRoom(Long lessonId) {
     String roomId = UUID.randomUUID().toString(); // 랜덤한 방 아이디 생성
 
     Lesson lesson = lessonRepository.findById(lessonId).orElse(null);
     // Builder 를 이용해서 ChatRoom 을 Building
     assert lesson != null;
-    ChatRoom room = ChatRoom.builder()
+    ChatRoomService room = ChatRoomService.builder()
         .roomId(roomId)
         .name(lesson.getCourse().getTitle()+"/ 강사 : "+ lesson.getTutor().getUsername())
         .build();

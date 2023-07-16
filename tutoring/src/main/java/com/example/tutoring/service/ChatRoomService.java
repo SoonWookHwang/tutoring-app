@@ -1,21 +1,22 @@
-package com.example.tutoring.dto.request;
+package com.example.tutoring.service;
 
-import com.example.tutoring.service.ChatService;
+import com.example.tutoring.dto.request.ChatDto;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketSession;
 
 @Data
-public class ChatRoom {
+public class ChatRoomService {
   private String roomId; // 채팅방 아이디
   private String name; // 채팅방 이름
   private Set<WebSocketSession> sessions = new HashSet<>();
 
   @Builder
-  public ChatRoom(String roomId, String name){
+  public ChatRoomService(String roomId, String name){
     this.roomId = roomId;
     this.name = name;
   }

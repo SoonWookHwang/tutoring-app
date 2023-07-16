@@ -1,6 +1,7 @@
 package com.example.tutoring.models;
 
 import com.example.tutoring.models.enums.MemberRole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,6 +37,7 @@ public class Member extends Timestamped{
   private MemberRole role;
 
   @OneToMany(mappedBy = "purchasedStudent")
+  @JsonIgnore
   private List<SubscriptionMember> subscriptionMembers;
 
   @Builder

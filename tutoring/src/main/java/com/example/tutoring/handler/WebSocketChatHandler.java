@@ -1,7 +1,7 @@
 package com.example.tutoring.handler;
 
 import com.example.tutoring.dto.request.ChatDto;
-import com.example.tutoring.dto.request.ChatRoom;
+import com.example.tutoring.service.ChatRoomService;
 import com.example.tutoring.service.ChatService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ public class WebSocketChatHandler extends TextWebSocketHandler {
 
     ChatDto chatMessage = mapper.readValue(payload, ChatDto.class);
 
-    ChatRoom room = service.findRoomById(chatMessage.getRoomId());
+    ChatRoomService room = service.findRoomById(chatMessage.getRoomId());
 
     room.handleAction(session, chatMessage, service);
   }

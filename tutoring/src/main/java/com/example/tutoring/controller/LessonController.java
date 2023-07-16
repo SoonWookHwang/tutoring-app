@@ -1,20 +1,20 @@
 package com.example.tutoring.controller;
 
-import static com.example.tutoring.global.ResponseEntity.*;
+import static com.example.tutoring.global.ResponseEntity.fail;
+import static com.example.tutoring.global.ResponseEntity.success;
 
-import com.example.tutoring.dto.request.ChatRoom;
 import com.example.tutoring.dto.request.LessonRegisterDto;
 import com.example.tutoring.dto.request.TakeLessonDto;
 import com.example.tutoring.global.ResponseEntity;
 import com.example.tutoring.models.enums.MemberRole.Authority;
 import com.example.tutoring.security.UserDetailsImpl;
+import com.example.tutoring.service.ChatRoomService;
 import com.example.tutoring.service.ChatService;
 import com.example.tutoring.service.LessonService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -52,12 +52,12 @@ public class LessonController {
 
   @PostMapping("/chat")
   @Secured(Authority.TUTOR)
-  public ChatRoom createRoom(@RequestParam Long lessonId) {
+  public ChatRoomService createRoom(@RequestParam Long lessonId) {
     return chatService.createRoom(lessonId);
   }
 
   @GetMapping("/chat")
-  public List<ChatRoom> findAllRooms() {
+  public List<ChatRoomService> findAllRooms() {
     return chatService.findAllRoom();
   }
 

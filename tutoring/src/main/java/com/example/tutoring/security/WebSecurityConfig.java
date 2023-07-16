@@ -1,5 +1,6 @@
 package com.example.tutoring.security;
 
+import com.example.tutoring.utils.AccessDeniedHandlerImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -31,18 +32,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     http.csrf().disable();
 
     http.authorizeRequests()
-        .antMatchers("/members/**").permitAll()
+        .antMatchers("/members/**","/access/error").permitAll()
         .anyRequest().authenticated()
         .and()
         .formLogin()
-        .loginProcessingUrl("/members/login")
-        .failureUrl("/members/login?error")
+        .successForwardUrl("/members/login/success")
         .permitAll()
         .and()
         .logout()
         .logoutUrl("/user/logout")
         .permitAll()
         .and()
-        .exceptionHandling();
+        .exceptionHandling()
+        .accessDeniedHandler(new AccessDeniedHandlerImpl());
   }
 }

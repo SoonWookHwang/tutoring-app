@@ -21,6 +21,7 @@ import java.util.Random;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,6 +32,7 @@ public class InitDummyData {
   private final CourseRepository courseRepository;
   private final MemberRepository memberRepository;
   private final SubscriptionRepository subscriptionRepository;
+  private final PasswordEncoder passwordEncoder;
 
   private final SpecialEventRepository specialEventRepository;
   private final SubscriptionMemberRepository subscriptionMemberRepository;
@@ -53,21 +55,21 @@ public class InitDummyData {
         case 0, 1, 2, 3, 4:
           dummys = Member.builder()
               .username("student" + (i + 1))
-              .password("password")
+              .password(passwordEncoder.encode("password"))
               .role(MemberRole.STUDENT).build();
           dummyList.add(dummys);
           break;
         case 5, 6, 7, 8:
           dummys = Member.builder()
               .username("tutor" + (i + 1))
-              .password("password")
+              .password(passwordEncoder.encode("password"))
               .role(MemberRole.TUTOR).build();
           dummyList.add(dummys);
           break;
         case 9:
           dummys = Member.builder()
               .username("admin" + (i + 1))
-              .password("password")
+              .password(passwordEncoder.encode("password"))
               .role(MemberRole.ADMIN).build();
           dummyList.add(dummys);
           break;
