@@ -4,6 +4,8 @@ import com.example.tutoring.models.enums.MemberRole;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +31,9 @@ public class Member extends Timestamped{
 
   @Column(nullable = false)
   private String password;
-  private int role;
+  @Column(nullable = false)
+  @Enumerated(value = EnumType.STRING)
+  private MemberRole role;
 
   @OneToMany(mappedBy = "purchasedStudent")
   private List<SubscriptionMember> subscriptionMembers;
@@ -38,14 +42,12 @@ public class Member extends Timestamped{
   protected Member(String username, String password, MemberRole role) {
     this.username = username;
     this.password = password;
-    this.role = role.getRole();
+    this.role = role;
   }
   public void updateMember(String username, String password,MemberRole role) {
     this.username = username;
     this.password = password;
-    this.role = role.getRole();
+    this.role = role;
   }
-
-
 }
 

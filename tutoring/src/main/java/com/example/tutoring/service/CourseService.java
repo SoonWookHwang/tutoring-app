@@ -49,12 +49,12 @@ public class CourseService {
   }
 
   @Transactional
-  public void changeIsSaleEnded(Long memberId, Long courseId)throws IllegalAccessException{
-    Member admin = memberRepository.findById(memberId)
-        .orElseThrow(() -> new NoSuchElementException("존재하지 않은 계정입니다."));
-    if (admin.getRole() != 0) {
-      throw new IllegalAccessException("관리자만 강의의 판매상태를 변경할 수 있습니다");
-    }
+  public void changeIsSaleEnded(Long courseId)throws IllegalAccessException{
+//    Member admin = memberRepository.findById(memberId)
+//        .orElseThrow(() -> new NoSuchElementException("존재하지 않은 계정입니다."));
+//    if (admin.getRole() != 0) {
+//      throw new IllegalAccessException("관리자만 강의의 판매상태를 변경할 수 있습니다");
+//    }
     Course course = courseRepository.findById(courseId)
         .orElseThrow(() -> new NoSuchElementException("존재하지 않은 강좌입니다"));
     course.changeIsSaleEnded(!course.isSaleEnded());

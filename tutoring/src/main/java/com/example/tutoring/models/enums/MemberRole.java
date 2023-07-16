@@ -4,13 +4,23 @@ import lombok.Getter;
 
 @Getter
 public enum MemberRole {
-  STUDENT(1),
-  TUTOR(2),
-  ADMIN(0);
-  public final int role;
+  STUDENT(Authority.STUDENT),
+  TUTOR(Authority.TUTOR),
+  ADMIN(Authority.ADMIN);
+  private final String authority;
 
-  MemberRole(int role) {
-    this.role = role;
+  MemberRole(String authority) {
+    this.authority= authority;
+  }
+  public String getAuthority() {
+    return this.authority;
+  }
+
+
+  public static class Authority {
+    public static final String STUDENT = "ROLE_STUDENT";
+    public static final String TUTOR = "ROLE_TUTOR";
+    public static final String ADMIN = "ROLE_ADMIN";
   }
 }
 
