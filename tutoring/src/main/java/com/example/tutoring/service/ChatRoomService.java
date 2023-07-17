@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Set;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketSession;
 
 @Data

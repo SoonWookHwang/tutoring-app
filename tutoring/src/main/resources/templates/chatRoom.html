@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Create Chat Room</title>
+</head>
+<body>
+<div id="container">
+  <h1>Create Chat Room</h1>
+  <form id="roomForm">
+    <label for="lessonId">Lesson ID:</label>
+    <input type="number" id="lessonId" name="lessonId" required>
+    <button type="submit">Create</button>
+  </form>
+  <div id="response"></div>
+</div>
+
+<script>
+  document.getElementById("roomForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    var lessonId = document.getElementById("lessonId").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/lessons/chat?lessonId=" + lessonId);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        var responseDiv = document.getElementById("response");
+        if (xhr.status === 200) {
+          responseDiv.innerHTML = "Chat room created successfully!";
+        } else {
+          responseDiv.innerHTML = "Failed to create chat room.";
+        }
+      }
+    };
+    xhr.send();
+  });
+</script>
+</body>
+</html>

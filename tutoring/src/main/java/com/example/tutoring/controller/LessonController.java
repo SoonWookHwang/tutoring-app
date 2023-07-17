@@ -61,4 +61,10 @@ public class LessonController {
     return chatService.findAllRoom();
   }
 
+//  @RequestMapping("/ws/chat")
+//  public ChatDto joinChatRoom(@RequestBody ChatDto Dto){
+//
+//
+//  }
+
 }

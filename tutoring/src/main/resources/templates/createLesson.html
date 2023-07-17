@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register Lesson</title>
+</head>
+<body>
+<h1>Register Lesson</h1>
+<form id="registerLessonForm">
+  <div>
+    <label for="tutorUsername">Tutor Username:</label>
+    <input type="text" id="tutorUsername" name="tutorUsername">
+  </div>
+  <div>
+    <label for="courseId">Course ID:</label>
+    <input type="text" id="courseId" name="courseId">
+  </div>
+  <div>
+    <label for="classType">Class Type:</label>
+    <input type="text" id="classType" name="classType">
+  </div>
+  <div>
+    <label for="languageType">Language Type:</label>
+    <input type="text" id="languageType" name="languageType">
+  </div>
+  <div>
+    <label for="date">Date:</label>
+    <input type="text" id="date" name="date">
+  </div>
+  <div>
+    <label for="duration">Duration:</label>
+    <input type="text" id="duration" name="duration">
+  </div>
+  <div>
+    <label for="lessonStartTime">Lesson Start Time:</label>
+    <input type="text" id="lessonStartTime" name="lessonStartTime">
+  </div>
+  <button type="submit">Register</button>
+</form>
+
+<script>
+  document.getElementById('registerLessonForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var form = event.target;
+    var data = {
+      tutorUsername: form.elements['tutorUsername'].value,
+      courseId: form.elements['courseId'].value,
+      classType: form.elements['classType'].value,
+      languageType: form.elements['languageType'].value,
+      date: form.elements['date'].value,
+      duration: form.elements['duration'].value,
+      lessonStartTime: form.elements['lessonStartTime'].value
+    };
+
+    fetch('/lessons', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(result) {
+      console.log(result);
+    })
+    .catch(function(error) {
+      console.error(error);
+    });
+  });
+</script>
+</body>
+</html>
