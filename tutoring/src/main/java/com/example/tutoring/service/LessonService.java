@@ -66,6 +66,7 @@ public class LessonService {
         .orElseThrow(() -> new IllegalAccessException("존재하지 않은 수강권입니다."));
     checkTakeLesson(dto.getClassType(),dto.getLanguageType(),lesson,student,ticket);
     ticket.onceTakeLesson(ticket);
+    lesson.addParticipants(student);
     return "수업을 수강합니다";
   }
 

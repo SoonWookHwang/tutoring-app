@@ -3,6 +3,8 @@ package com.example.tutoring.models;
 import com.example.tutoring.models.enums.ClassType;
 import com.example.tutoring.models.enums.LanguageType;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
@@ -52,6 +55,9 @@ public class Lesson extends Timestamped{
   @JoinColumn(name = "tutor_id", nullable = false)
   private Member tutor;
 
+  @OneToMany
+  private List<Member> participants;
+
   @Builder
   public Lesson(ClassType classType, LanguageType languageType, LocalDateTime date,
       LocalDateTime duration, LocalDateTime lessonStartTime,
@@ -65,5 +71,9 @@ public class Lesson extends Timestamped{
     this.isFinished = isFinished;
     this.course = course;
     this.tutor = tutor;
+  }
+
+  public void addParticipants(Member student){
+    participants.add(student);
   }
 }
